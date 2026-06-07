@@ -1,12 +1,32 @@
-# ASUS Driver Hub
+<div align="center">
 
-A standalone PowerShell utility for automated ASUS driver download, ASUS driver update, and silent installation on Windows. Built for ASUS TUF laptops, but adaptable to any ASUS motherboard driver setup. Handles ASUS audio driver, ASUS chipset driver, ASUS bluetooth driver, and more -- all from a single script with a dark-themed WPF GUI.
+<pre>
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿
+⡇⣶⠆⣴⣶⡶⢠⡖⡴⣴⠂⢄⣒⡂⡶⣐⣒⣒⣒⡂⢲⡆⢲⣦⠐⣶⣶⣶⣶⣶⠀⡔⣶⣶⣶⡶⢠⣶⡀⡆⣶⡶⠶⡀⢢⢶⡖⡀⠄⡲⣶⣶⣖⡆⠠⢰⣶⣆⢶⡄⢲⢸
+⡇⡟⡆⣿⣿⡇⣾⠃⣿⠃⢢⣿⣿⡇⣧⣿⣿⣿⣿⣷⡀⣿⢠⢻⣆⠜⣿⣿⣯⣿⡇⢧⢻⠛⣿⢃⣾⣿⡅⢧⣶⣿⣿⣿⣔⠕⠳⢳⡌⢄⠙⣿⣿⡼⢂⢃⢿⣿⡜⡇⣇⢸
+⡇⢇⡇⣿⣿⠀⣿⠸⡟⢀⣿⣿⣿⣇⢸⣿⣿⣿⣿⣿⣧⡸⣇⣧⢿⣄⠸⣿⣿⣻⣿⢸⡜⡤⣿⢸⣿⣿⠇⣸⣿⣿⣿⣿⣿⣧⣻⡄⢿⣄⠄⠘⣿⣿⣼⡘⢸⣿⡇⡇⢸⢸
+⡇⢸⡇⠟⣿⠀⡟⠀⢁⣾⣿⡿⢿⣛⡸⠿⠯⠿⣿⣛⡿⣷⣝⢞⢷⡙⢦⠈⢿⣿⣿⡀⣷⡄⠞⣾⣿⡿⣰⣿⣿⣿⡿⣿⣻⠿⠯⠿⠦⣝⢳⠄⠈⢿⡆⡇⢺⣿⡇⣇⢸⢸
+⡇⢸⡇⠠⣿⡀⡇⢀⣿⠿⠉⠈⠁⢀⣀⠀⠀⠀⠀⠀⠉⠓⢿⣯⣏⠻⣦⣕⠄⠙⢿⣧⠘⣿⣦⣻⣿⣿⣿⣿⣿⠗⠋⠁⠀⣀⠀⠀⠀⠀⠀⠉⠐⠀⠃⡃⢸⣿⡇⢸⢸⣸
+⡇⡘⣿⠀⢺⡇⠃⢈⠁⠀⢠⣴⠀⣬⡍⠀⠀⠀⢠⣦⠀⣤⡐⢌⢿⣷⣬⣻⢷⣥⣀⠘⠳⡘⣿⣿⣿⣿⣿⠟⠅⣠⡔⢀⣬⡅⠀⠀⠀⣰⣦⠰⣤⠀⠀⠁⢸⡿⢀⡟⣿⢸
+⡇⡇⣿⡆⠈⢿⡀⢾⣿⣄⠸⣿⠸⣿⣧⠀⠀⢀⣾⣯⠶⢿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣶⣬⣌⣻⣿⣿⣿⣿⣴⣿⣧⢸⣿⣇⠀⠀⣠⣿⡷⠶⡟⢀⣾⠃⣾⠃⣼⠃⣿⢸
+⡇⣇⠿⣷⠐⡌⢧⠸⣿⣿⣷⢽⠣⠹⢿⣿⣿⡿⠿⢋⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡂⠹⠿⣿⣿⣿⠿⠣⣪⢵⣿⠇⣸⠃⢠⡟⣰⣿⢸
+⡇⣿⢠⣿⡇⢹⡆⢣⢹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⣴⠁⢰⢸⢱⢸⣿⢸
+⡇⣿⡼⢹⣿⡀⢻⣮⡂⠻⣿⣿⣿⡿⣽⣟⡾⣷⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⣽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⣻⢯⡿⣽⣿⣿⠟⠑⢠⡆⠐⠇⠎⣾⣿⢸
+⣷⣶⣶⣶⣶⣶⣶⣶⣶⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣶⣶⣶⣶⣶⣶⣶⣾
+</pre>
 
-No Python. No Node.js. No package managers. Runs natively on a clean Windows install.
+<h1>ASUS Driver Utility</h1>
+
+<p>
+<b>A simple PowerShell script to automatically download, update, and install ASUS drivers.</b><br>
+No Python, no Node.js, no complicated setups, Something that works perfectly on a fresh windows install.
+</p>
+
+</div>
 
 ---
 
-## Quick Start -- Run Directly from GitHub
+## Quick Start ✨
 
 Open **PowerShell** (or **Windows Terminal**) and paste this single line:
 
@@ -14,110 +34,62 @@ Open **PowerShell** (or **Windows Terminal**) and paste this single line:
 irm https://raw.githubusercontent.com/yadavnikhil03/asus_driver/main/start.ps1 | iex
 ```
 
-That's it. No git required. No manual downloads. Works on a completely fresh Windows install.
-
-The bootstrapper (`start.ps1`) downloads `install_drivers.ps1` and `drivers.json` to a temp folder and launches the GUI automatically.
-
-### Alternative Methods
-
-**With git installed:**
-```powershell
-git clone https://github.com/yadavnikhil03/asus_driver.git; & .\asus_driver\install_drivers.ps1
-```
-
-**Manual download:**
-1. Go to [github.com/yadavnikhil03/asus_driver](https://github.com/yadavnikhil03/asus_driver) and click **Code > Download ZIP**.
-2. Extract the ZIP to any folder.
-3. Right-click `install_drivers.ps1` and select **Run with PowerShell**.
+That's it! This safely downloads and launches the tool directly.
 
 ---
 
-## Included Drivers
+## What's Included? 
 
-The following ASUS driver packages are pre-configured in `drivers.json`:
+By default, the script covers the core ASUS TUF/ROG driver stack. Everything is managed via a simple `drivers.json` file:
 
-| Category | Driver | Winget ID |
-|---|---|---|
-| Chipset | AMD Chipset Driver | `AMD.ChipsetDrivers` |
-| Graphics | AMD Graphics Driver | `AMD.RadeonSoftware` |
-| Graphics | NVIDIA Graphics Driver (ROG DCH) | `Nvidia.DisplayDriver` |
-| Graphics | AMD Radeon Control Panel (HSA) | `AMD.RadeonSoftware` |
-| Audio | Realtek Audio Driver (DTS ROG) | `Realtek.Audio` |
-| Audio | Realtek Audio Driver (Only) | `Realtek.Audio` |
-| Bluetooth | MediaTek Bluetooth Driver | `MediaTek.Bluetooth` |
-| Touchpad | ASUS Precision TouchPad Driver | `Asus.ASUSPrecisionTouchpadDriver` |
-| ASUS Utilities | ASUS Smart Display Control | `Asus.ASUSSmartDisplayControl` |
-| ASUS Utilities | ASUS System Control Interface v3 | `Asus.AsusSystemControlInterface3` |
-| ASUS Utilities | Armoury Crate and Aura Creator | `Asus.ArmouryCrateInstaller` |
-| ASUS Utilities | Armoury Crate Control Interface | `Asus.ArmouryCrate` |
-| ASUS Utilities | ASUS Refresh Rate Service | `Asus.ASUSRefreshRateService` |
-| ASUS Utilities | ASUS Wireless Radio Control | `Asus.ASUSWirelessRadioControl` |
-
-This covers the core ASUS driver stack: ASUS chipset driver, ASUS audio driver, ASUS bluetooth driver, graphics drivers, and ASUS-specific system utilities. If you need an ASUS motherboard driver or an ASUS x99a base system device driver, add its entry to `drivers.json` following the schema below.
+*   **Chipset:** AMD Chipset Driver
+*   **Graphics:** AMD & NVIDIA (ROG DCH) Drivers
+*   **Audio:** Realtek Audio (DTS ROG)
+*   **Bluetooth:** MediaTek Bluetooth
+*   **Touchpad:** ASUS Precision TouchPad
+*   **Utilities:** Armoury Crate, ASUS System Control Interface v3, Smart Display Control, and more.
 
 ---
 
-## Adding or Updating Drivers
+## Adding Your Own Drivers 
 
-Edit `drivers.json` to add new ASUS driver entries or update existing ones. Each entry uses this schema:
+Want to add a custom motherboard driver or an older base system device driver? Just open `drivers.json` and add a new entry like this:
 
 ```json
 {
-  "FileName": "InstallerFileName.exe",
-  "FriendlyName": "Display Name in GUI",
-  "WingetId": "Winget.Package.Id",
-  "DownloadUrl": "https://official-download-link.com/file.exe",
-  "SilentArgs": "/silent-switches",
-  "Category": "Graphics / Audio / Touchpad / etc."
+  "FileName": "YourInstaller.exe",
+  "FriendlyName": "My Custom Driver",
+  "WingetId": "",
+  "DownloadUrl": "[https://link-to-driver.com/file.exe](https://link-to-driver.com/file.exe)",
+  "SilentArgs": "/silent",
+  "Category": "Audio"
 }
 ```
-
-- If `DownloadUrl` is empty, the download option will not appear for that driver.
-- If `WingetId` is empty, winget installation will be skipped for that driver.
-- This is the recommended approach for adding any ASUS driver download source, whether it is an ASUS motherboard driver, an ASUS x99a base system device driver, or any other hardware-specific package.
+*(Leave `DownloadUrl` or `WingetId` empty if you don't need them.)*
 
 ---
 
-## Post-Reinstall Usage
+## Offline / USB Setup 
 
-After a fresh Windows reinstall or reset:
+Doing a fresh Windows reinstall and already have the `.exe` files? 
 
-1. Run the one-liner from the Quick Start section above, **or** clone/download the repository manually.
-2. If you have a local backup of your ASUS driver installers (e.g., on a USB drive), copy the `.exe` files into the same folder as `install_drivers.ps1`.
-3. The script will detect local installers automatically. For any missing drivers, it will attempt ASUS driver download from the configured URLs.
+1. Put your `.exe` installers in the same folder as `install_drivers.ps1`.
+2. Run the script.
+3. It will automatically detect your local files and only download what's missing!
 
-If script execution is restricted on your machine:
-
+*Tip: If PowerShell blocks the script, run this first:*
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force
-.\install_drivers.ps1
 ```
 
 ---
 
-## Pushing to GitHub
+## Pushing to GitHub 
 
-The `.gitignore` is pre-configured to block `.exe` files, so you can safely push this repository without uploading large proprietary binaries (which would violate licensing terms and exceed GitHub's 100MB file size limit).
-
-```bash
-git init
-git add .
-git commit -m "Initialize ASUS driver hub installer"
-git remote add origin https://github.com/yourusername/your-repo-name.git
-git branch -M main
-git push -u origin main
-```
-
-Only `install_drivers.ps1`, `drivers.json`, `.gitignore`, and `README.md` will be committed. None of the `.exe` installer files are included.
+Don't worry about uploading massive `.exe` files. The included `.gitignore` automatically blocks all `.exe` files. You can safely `git push` this repo without hitting GitHub's size limits or violating driver licenses.
 
 ---
 
-## Keywords
-
-asus driver, asus driver hub, asus driver download, asus driver update, asus bluetooth driver, asus motherboard driver, asus audio driver, asus chipset driver, asus x99a base system device driver
-
----
-
-## Author
+## Author ૮ ˶ᵔ ᵕ ᵔ˶ ა
 
 Developed by [@yadavnikhil03](https://github.com/yadavnikhil03)
