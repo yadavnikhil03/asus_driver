@@ -1,3 +1,11 @@
+$isAdmin = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+
+if (-not $isAdmin) {
+    $scriptUrl = "https://raw.githubusercontent.com/yadavnikhil03/asus_driver/main/start.ps1"
+    Start-Process -FilePath "powershell.exe" -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"irm '$scriptUrl' | iex`"" -Verb RunAs
+    return
+}
+
 $repo = "https://raw.githubusercontent.com/yadavnikhil03/asus_driver/main"
 $dir  = "$env:TEMP\asus_driver"
 
