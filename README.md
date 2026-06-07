@@ -8,21 +8,24 @@ No Python. No Node.js. No package managers. Runs natively on a clean Windows ins
 
 ## Quick Start -- Run Directly from GitHub
 
-Open **PowerShell** (or **Windows Terminal**) and paste this one-liner:
+Open **PowerShell** (or **Windows Terminal**) and paste this single line:
 
 ```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; git clone https://github.com/yadavnikhil03/asus_driver.git "$env:TEMP\asus_driver"; & "$env:TEMP\asus_driver\install_drivers.ps1"
+irm https://raw.githubusercontent.com/yadavnikhil03/asus_driver/main/start.ps1 | iex
 ```
 
-This will:
-1. Temporarily bypass execution policy for the current session.
-2. Clone the repository to a temp folder.
-3. Launch the ASUS driver installer GUI automatically.
+That's it. No git required. No manual downloads. Works on a completely fresh Windows install.
 
-> If you do not have `git` installed on a fresh Windows setup, use the manual download method described below.
+The bootstrapper (`start.ps1`) downloads `install_drivers.ps1` and `drivers.json` to a temp folder and launches the GUI automatically.
 
-### Alternative: Manual Download
+### Alternative Methods
 
+**With git installed:**
+```powershell
+git clone https://github.com/yadavnikhil03/asus_driver.git; & .\asus_driver\install_drivers.ps1
+```
+
+**Manual download:**
 1. Go to [github.com/yadavnikhil03/asus_driver](https://github.com/yadavnikhil03/asus_driver) and click **Code > Download ZIP**.
 2. Extract the ZIP to any folder.
 3. Right-click `install_drivers.ps1` and select **Run with PowerShell**.
