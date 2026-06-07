@@ -388,12 +388,14 @@ function Download-FileResponsive($url, $destination) {
     Write-Log "Downloading from: $url"
     Write-Log "Saving to: $destination"
     
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
     if ($url -like "*drive.google.com*" -or $url -like "*docs.google.com*") {
         Write-Log "Google Drive URL detected. Processing direct download..."
         $fileId = $null
-        if ($url -match 'id=([a-zA-Z0-9_-]+)') {
+        if ($url -match '/d/([a-zA-Z0-9_-]+)') {
             $fileId = $Matches[1]
-        } elseif ($url -match '/d/([a-zA-Z0-9_-]+)') {
+        } elseif ($url -match 'id=([a-zA-Z0-9_-]+)') {
             $fileId = $Matches[1]
         }
         
@@ -402,54 +404,36 @@ function Download-FileResponsive($url, $destination) {
             return $false
         }
         
+        Write-Log "Extracted File ID: $fileId"
+        $downloadUrl = "https://drive.usercontent.google.com/download?id=$fileId&export=download&confirm=t"
+        Write-Log "Using direct download URL: $downloadUrl"
+        
         try {
-            $cookieContainer = New-Object System.Net.CookieContainer
-            $ucUrl = "https://docs.google.com/uc?export=download&id=$fileId"
-            
-            $request = [System.Net.HttpWebRequest]::Create($ucUrl)
-            $request.CookieContainer = $cookieContainer
+            $request = [System.Net.HttpWebRequest]::Create($downloadUrl)
             $request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
             $request.Method = "GET"
+            $request.AllowAutoRedirect = $true
+            $request.MaximumAutomaticRedirections = 10
             
             $response = $request.GetResponse()
             $contentType = $response.ContentType
-            
-            $downloadUrl = $ucUrl
+            $contentLength = $response.ContentLength
+            Write-Log "Response: $contentType, Size: $([math]::Round($contentLength / 1MB, 2)) MB"
             
             if ($contentType -like "*text/html*") {
-                $reader = New-Object System.IO.StreamReader($response.GetResponseStream())
-                $html = $reader.ReadToEnd()
                 $response.Close()
-                
-                $confirmToken = $null
-                if ($html -match 'confirm=([a-zA-Z0-9_-]+)') {
-                    $confirmToken = $Matches[1]
-                } elseif ($html -match 'value="([a-zA-Z0-9_-]+)" name="confirm"') {
-                    $confirmToken = $Matches[1]
-                }
-                
-                if ($confirmToken) {
-                    Write-Log "Large file warning detected. Bypassing with confirmation code: $confirmToken"
-                    $downloadUrl = "https://docs.google.com/uc?export=download&confirm=$confirmToken&id=$fileId"
-                } else {
-                    Write-Log "Warning: Could not parse Google Drive virus scan confirmation token. Attempting direct download..."
-                }
-            } else {
-                $response.Close()
-                Write-Log "Direct stream detected (small file)."
+                Write-Log "Error: Google Drive returned HTML instead of file. The file may not be publicly shared."
+                return $false
             }
             
-            $dlRequest = [System.Net.HttpWebRequest]::Create($downloadUrl)
-            $dlRequest.CookieContainer = $cookieContainer
-            $dlRequest.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
-            
-            $dlResponse = $dlRequest.GetResponse()
-            $responseStream = $dlResponse.GetResponseStream()
+            $responseStream = $response.GetResponseStream()
             $fileStream = [System.IO.File]::Create($destination)
             
             $buffer = New-Object byte[] 65536
+            $totalRead = 0
             while (($read = $responseStream.Read($buffer, 0, $buffer.Length)) -gt 0) {
                 $fileStream.Write($buffer, 0, $read)
+                $totalRead += $read
                 
                 [System.Windows.Threading.Dispatcher]::CurrentDispatcher.Invoke(
                     [System.Windows.Threading.DispatcherPriority]::Background,
@@ -459,9 +443,9 @@ function Download-FileResponsive($url, $destination) {
             
             $fileStream.Close()
             $responseStream.Close()
-            $dlResponse.Close()
+            $response.Close()
             
-            Write-Log "Google Drive download successful."
+            Write-Log "Google Drive download successful. Total: $([math]::Round($totalRead / 1MB, 2)) MB"
             return $true
         }
         catch {
