@@ -13,7 +13,6 @@ if (-not $isAdmin) {
     }
     Exit
 }
-
 Import-Module BitsTransfer -ErrorAction SilentlyContinue
 
 $OutputEncoding = [System.Text.Encoding]::UTF8
