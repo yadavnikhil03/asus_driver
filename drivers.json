@@ -1,0 +1,115 @@
+[
+    {
+        "FileName":  "AMD_Chipset_DriverOnly_ROG_AMD_B_V1.2.0.119_29547_1.exe",
+        "FriendlyName":  "AMD Chipset Driver",
+        "WingetId":  "AMD.ChipsetDrivers",
+        "DownloadUrl":  "https://drive.google.com/file/d/1FkxTyJ_VeMONH__ngTQ8z97ydK8qCVgj/view?usp=sharing",
+        "SilentArgs":  "/S",
+        "Category":  "Chipset"
+    },
+    {
+        "FileName":  "AMD_Graphic_V30.0.13002.1001_27271_2_1.exe",
+        "FriendlyName":  "AMD Graphics Driver",
+        "WingetId":  "AMD.RadeonSoftware",
+        "DownloadUrl":  "https://drive.google.com/file/d/1abn-DThHfm4lPov5cp1S9On2BXu39w_I/view?usp=sharing",
+        "SilentArgs":  "/S",
+        "Category":  "Graphics"
+    },
+    {
+        "FileName":  "ASUSSmartDisplayControl_ASUS_Z_V1.10.13_14430_4.exe",
+        "FriendlyName":  "ASUS Smart Display Control",
+        "WingetId":  "Asus.ASUSSmartDisplayControl",
+        "DownloadUrl":  "https://drive.google.com/file/d/1tVnV2tdbX_rRw8KLurRJmbxkRdcDi54A/view?usp=sharing",
+        "SilentArgs":  "/s /v\"/qn\"",
+        "Category":  "ASUS Utilities"
+    },
+    {
+        "FileName":  "ASUSSystemControlInterfacev3_ASUS_Z_V3.1.64.0_17639.exe",
+        "FriendlyName":  "ASUS System Control Interface v3",
+        "WingetId":  "Asus.AsusSystemControlInterface3",
+        "DownloadUrl":  "https://drive.google.com/file/d/1CRSo6en1HjGrW0sIu_-c37pK9DlqHYf1/view?usp=sharing",
+        "SilentArgs":  "/s /v\"/qn\"",
+        "Category":  "ASUS Utilities"
+    },
+    {
+        "FileName":  "ArmouryCrateAuraCreatorInstaller_ASUS_Z_V3.3.1.0_16611_2.exe",
+        "FriendlyName":  "Armoury Crate \u0026 Aura Creator Installer",
+        "WingetId":  "Asus.ArmouryCrateInstaller",
+        "DownloadUrl":  "https://drive.google.com/file/d/12AxQuMC7lEOmYsdh5WRNjp04DfDkH9Qt/view?usp=sharing",
+        "SilentArgs":  "/s",
+        "Category":  "ASUS Utilities"
+    },
+    {
+        "FileName":  "ArmouryCrateControlInterface_ASUS_Z_V1.2.0.1_16991.exe",
+        "FriendlyName":  "Armoury Crate Control Interface",
+        "WingetId":  "Asus.ArmouryCrate",
+        "DownloadUrl":  "https://drive.google.com/file/d/1zm-IWGxzlOML0gkylNzuddTTiIY3-ucx/view?usp=sharing",
+        "SilentArgs":  "/s /v\"/qn\"",
+        "Category":  "ASUS Utilities"
+    },
+    {
+        "FileName":  "Audio_DTS_ROG_Realtek_B_V6.0.9239.1_24669_2.exe",
+        "FriendlyName":  "Realtek Audio Driver (DTS ROG)",
+        "WingetId":  "Realtek.Audio",
+        "DownloadUrl":  "https://drive.google.com/file/d/1YEqnNq2oadTnJKvmXdu7yyugT4V92Utq/view?usp=sharing",
+        "SilentArgs":  "/s /v\"/qn\"",
+        "Category":  "Audio"
+    },
+    {
+        "FileName":  "Audio_DriverOnly_DTS_ROG_Realtek_B_V6.0.9427.1_32094_1.exe",
+        "FriendlyName":  "Realtek Audio Driver (Only)",
+        "WingetId":  "Realtek.Audio",
+        "DownloadUrl":  "https://drive.google.com/file/d/1kKpAHz9qwCNHua2SYjWxZY5LuVRui7dk/view?usp=sharing",
+        "SilentArgs":  "/s /v\"/qn\"",
+        "Category":  "Audio"
+    },
+    {
+        "FileName":  "Bluetooth_ROG_MediaTek_B_V1.3.17.155Sub1_34029_1.exe",
+        "FriendlyName":  "MediaTek Bluetooth Driver",
+        "WingetId":  "MediaTek.Bluetooth",
+        "DownloadUrl":  "https://drive.google.com/file/d/1uNBePNFO7a79t8PRWlGwvbKtQwE1PhPt/view?usp=sharing",
+        "SilentArgs":  "/s /v\"/qn\"",
+        "Category":  "Bluetooth"
+    },
+    {
+        "FileName":  "Graphic_DCH_ROG_NVIDIA_B_V32.0.15.6607_41457.exe",
+        "FriendlyName":  "NVIDIA Graphics Driver (ROG DCH)",
+        "WingetId":  "Nvidia.DisplayDriver",
+        "DownloadUrl":  "https://drive.google.com/file/d/1IHT4cODZvoeUkBtnMZdf_IHX4btKqueN/view?usp=sharing",
+        "SilentArgs":  "-s -noreboot",
+        "Category":  "Graphics"
+    },
+    {
+        "FileName":  "HSA_AMDRadeonSoftware_ROG_AMD_B_V10.21.30024.0_27272_3.exe",
+        "FriendlyName":  "AMD Radeon Control Panel (HSA)",
+        "WingetId":  "AMD.RadeonSoftware",
+        "DownloadUrl":  "https://drive.google.com/file/d/1CYlzDLUUeWim9JsxLgRL9A33Sbp9Z_wW/view?usp=sharing",
+        "SilentArgs":  "/S",
+        "Category":  "Graphics"
+    },
+    {
+        "FileName":  "PrecisionTouchPad_ROG_ASUS_B_V16.0.0.27_39161_1.exe",
+        "FriendlyName":  "ASUS Precision TouchPad Driver",
+        "WingetId":  "Asus.ASUSPrecisionTouchpadDriver",
+        "DownloadUrl":  "https://drive.google.com/file/d/1mYqhZrTGUVWvNoLrs-pwdGYpui8l80Do/view?usp=sharing",
+        "SilentArgs":  "/s /v\"/qn\"",
+        "Category":  "Touchpad"
+    },
+    {
+        "FileName":  "RefreshRateService_ASUS_Z_V2.0.8_13230_4.exe",
+        "FriendlyName":  "ASUS Refresh Rate Service",
+        "WingetId":  "Asus.ASUSRefreshRateService",
+        "DownloadUrl":  "https://drive.google.com/file/d/1G60LzflTXzg6GmYmJ3joK96KO3nnG2TK/view?usp=sharing",
+        "SilentArgs":  "/s /v\"/qn\"",
+        "Category":  "ASUS Utilities"
+    },
+    {
+        "FileName":  "Wirelessradiocontroldriver_ASUS_Z_V1.0.0.14_13413_3.exe",
+        "FriendlyName":  "ASUS Wireless Radio Control Driver",
+        "WingetId":  "Asus.ASUSWirelessRadioControl",
+        "DownloadUrl":  "https://drive.google.com/file/d/1bqkqnZ8L2ys0bT_CbFgkBu60r-geciP4/view?usp=sharing",
+        "SilentArgs":  "/s /v\"/qn\"",
+        "Category":  "ASUS Utilities"
+    }
+]
+
