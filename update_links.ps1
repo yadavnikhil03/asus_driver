@@ -17,8 +17,6 @@ $urls = @(
 
 $jsonPath = "C:\Users\nikhi\Downloads\drivers\drivers.json"
 $drivers = Get-Content $jsonPath -Raw | ConvertFrom-Json
-
-# Enable modern TLS
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
 foreach ($url in $urls) {
@@ -36,19 +34,14 @@ foreach ($url in $urls) {
             $disp = $res.Headers["Content-Disposition"]
             
             $filename = $null
-            
-            # Case 1: Google Drive Warning page (HTML)
             if ($contentType -like "*text/html*") {
                 $reader = New-Object System.IO.StreamReader($res.GetResponseStream())
                 $html = $reader.ReadToEnd()
                 $res.Close()
-                
-                # Extract filename using regex from warning page HTML
                 if ($html -match 'class="uc-name-size"><a href="/open\?id=[a-zA-Z0-9_-]+">([^<]+)</a>') {
                     $filename = $Matches[1]
                 }
             } else {
-                # Case 2: Direct file download stream
                 $res.Close()
                 if ($disp -match 'filename="([^"]+)"') {
                     $filename = $Matches[1]
@@ -76,6 +69,5 @@ foreach ($url in $urls) {
     }
 }
 
-# Save updated drivers.json
 $drivers | ConvertTo-Json -Depth 10 | Set-Content $jsonPath
 Write-Host "drivers.json updated successfully!"

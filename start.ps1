@@ -7,3 +7,5 @@ irm "$repo/install_drivers.ps1" -OutFile "$dir\install_drivers.ps1"
 irm "$repo/drivers.json"        -OutFile "$dir\drivers.json"
 
 & "$dir\install_drivers.ps1"
+
+Remove-Item -Path $dir -Recurse -Force -ErrorAction SilentlyContinue

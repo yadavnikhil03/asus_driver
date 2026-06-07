@@ -591,7 +591,9 @@ foreach ($driver in $Drivers) {
         $txtStatus.Text = "DOWNLOADING..."
         $txtStatus.Foreground = $BrushConverter.ConvertFromString("#00F0FF")
         
-        $targetPath = Join-Path $ScriptDir $driver.FileName
+        $dlTempDir = Join-Path $env:TEMP "TufDriversCache"
+        if (-not (Test-Path -Path $dlTempDir)) { New-Item -ItemType Directory -Path $dlTempDir -Force | Out-Null }
+        $targetPath = Join-Path $dlTempDir $driver.FileName
         $success = Download-FileResponsive $driver.DownloadUrl $targetPath
         
         if ($success) {
@@ -684,7 +686,7 @@ $BtnInstall.Add_Click({
         $useWinget = $ChkUseWinget.IsChecked -and -not [string]::IsNullOrEmpty($driver.WingetId)
         
         $localPath = Join-Path $ScriptDir $driver.FileName
-        $tempDir = Join-Path $env:TEMP "TufDriversCache"
+        $tempDir  = Join-Path $env:TEMP "TufDriversCache"
         $tempPath = Join-Path $tempDir $driver.FileName
         $installPath = $null
         $isTemp = $false
@@ -764,10 +766,8 @@ $BtnInstall.Add_Click({
                     Write-Log "Failed to execute installer: $($_.Exception.Message)"
                 }
                 
-                if ($isTemp -and (Test-Path -Path $installPath)) {
-                    Write-Log "Cleaning up temporary installer file: $installPath"
-                    Remove-Item -Path $installPath -Force -ErrorAction SilentlyContinue
-                }
+                # Temp files are cleaned up when the window closes, not here.
+                # This keeps already-downloaded files available if the user retries.
             }
         }
         
@@ -816,6 +816,13 @@ $BtnSuccessClose.Add_Click({
 
 $BtnClose.Add_Click({
     $window.Close()
+})
+
+$window.Add_Closed({
+    $tempDir = Join-Path $env:TEMP "TufDriversCache"
+    if (Test-Path -Path $tempDir) {
+        Remove-Item -Path $tempDir -Recurse -Force -ErrorAction SilentlyContinue
+    }
 })
 
 $TxtAuthor.Add_MouseDown({
