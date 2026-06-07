@@ -1,0 +1,9 @@
+# Exclude large binary installers
+*.exe
+*.zip
+*.rar
+*.7z
+
+# Exclude log files
+*.log
+install_log.txt
